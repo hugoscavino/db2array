@@ -1,0 +1,7 @@
+-------------------------------------------------------------------------------
+Test set: com.ijudy.mapper.EmployeeServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in com.ijudy.mapper.EmployeeServiceTest
+testService(com.ijudy.mapper.EmployeeServiceTest)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NullPointerException
+
