@@ -31,16 +31,16 @@ import com.ijudy.domain.Employee;
 public class EmployeeMapperTest {
 	
 	 @Autowired
-	 private EmployeeMapper mapper;
+	 private EmployeeMapper employeeMapper;
 
 	  @Test
 	  final public void testMapper() {
 		  
-		List<String> params = new ArrayList<String>(1);
+		List<String> params = new ArrayList<String>(2);
 		params.add("000010");
 		params.add("000020");
 		
-	    List<Employee> emps = this.mapper.getEmployees(params);
+	    List<Employee> emps = this.employeeMapper.getEmployees(params);
 	    assertThat(emps).isNotNull();
 	    assertThat(emps.get(0)).isNotNull();
 	    assertThat(emps.get(0).getEmpNo().equalsIgnoreCase("000010"));

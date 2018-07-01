@@ -2,24 +2,12 @@ package com.ijudy.service;
 
 import java.util.List;
 
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
 
 import com.ijudy.domain.Employee;
-import com.ijudy.mapper.EmployeeMapper;
 
-/**
- * EmployeeService simply receives an array of emp numbers and uses a mapper to get a list of
- * employees from the database.
- */
-@Transactional
-public class EmployeeService {
-	  private final EmployeeMapper mapper;
+@Service
+public interface EmployeeService {
 
-	  public EmployeeService(EmployeeMapper mapper) {
-	    this.mapper = mapper;
-	  }
-
-	  public List<Employee> getEmployees(List<String> empNumbers) {
-	    return this.mapper.getEmployees(empNumbers);
-	  }
+	  public List<Employee> getEmployees(List<String> empNumbers);
 }

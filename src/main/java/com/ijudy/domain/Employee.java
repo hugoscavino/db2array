@@ -25,7 +25,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class Employee {
 
 	private String empNo; 		// "EMPNO" CHAR(6 OCTETS) NOT NULL,
-	private String firsName; 	// "FIRSTNME" VARCHAR(12 OCTETS) NOT NULL,
+	private String firstName; 	// "FIRSTNME" VARCHAR(12 OCTETS) NOT NULL,
 	private String middle; 		//	"MIDINIT" CHAR(1 OCTETS),
 	private String lastName; 	// "LASTNAME" VARCHAR(15 OCTETS) NOT NULL,
 	private String workDept; 	// "WORKDEPT" CHAR(3 OCTETS),
@@ -43,7 +43,7 @@ public class Employee {
 	public String toString() {
 		return new ToStringBuilder(this).
 				append("empNo", empNo).
-				append("firsName", firsName).
+				append("firstName", firstName).
 				append("middle", middle).
 				append("lastName", lastName).
 				append("workDept", workDept).
@@ -68,11 +68,11 @@ public class Employee {
 	}
 
 	public String getFirsName() {
-		return firsName;
+		return firstName;
 	}
 
-	public void setFirsName(String firsName) {
-		this.firsName = firsName;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
 	public String getMiddle() {

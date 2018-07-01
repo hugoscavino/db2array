@@ -14,6 +14,7 @@
  *    limitations under the License.
  */
 package com.ijudy.dao;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -22,5 +23,8 @@ import com.ijudy.domain.Employee;
 
 @Component
 public interface EmployeeDao {
-	List<Employee> getEmployees(List<String> empNumbers);
+	
+	public List<Employee> getEmployeesCallableStatment(String[] empNumbers) throws SQLException;
+	
+	public List<Employee> getEmployees(String[] empNumbers) throws SQLException;
 }

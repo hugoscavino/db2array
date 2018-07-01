@@ -17,7 +17,6 @@ package com.ijudy.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -32,6 +31,7 @@ import com.ijudy.domain.Employee;
 
 
 public interface EmployeeMapper {
+	
 	@Results(id = "empResult", value = {
 			  @Result(property = "empNo", column = "EMPNO", id = true),
 			  @Result(property = "firsName", column = "FIRSTNME"),
