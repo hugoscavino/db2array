@@ -1,5 +1,6 @@
 package com.ijudy.dao.impl;
 
+import java.math.BigDecimal;
 import java.sql.Array;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -121,12 +122,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			employee.setPhone((String)row.get("PHONENO"));
 			employee.setHireDate((java.sql.Date)row.get("HIREDATE"));
 			employee.setJob((String)row.get("JOB"));
-			employee.setEduLevel((String)row.get("EDLEVEL"));		
+			employee.setEduLevel((Integer)row.get("EDLEVEL"));		
 			employee.setSex((String)row.get("SEX"));
 			employee.setBirth((java.sql.Date)row.get("BIRTHDATE"));
-			employee.setSalary((Float)row.get("SALARY"));
-			employee.setBonus((Float)row.get("BONUS"));
-			employee.setCommission((Float)row.get("COMM"));
+			employee.setSalary((BigDecimal)row.get("SALARY"));
+			employee.setBonus((BigDecimal)row.get("BONUS"));
+			employee.setCommission((BigDecimal)row.get("COMM"));
 			list.add(employee);
 		}
  

@@ -39,12 +39,12 @@ public class EmployeeRowMapper implements RowMapper<Employee> {
 		employee.setPhone(resultset.getString("PHONENO"));
 		employee.setHireDate(resultset.getDate("HIREDATE"));
 		employee.setJob(resultset.getString("JOB"));
-		employee.setEduLevel(resultset.getString("EDLEVEL"));		
+		employee.setEduLevel(resultset.getInt("EDLEVEL"));		
 		employee.setSex(resultset.getString("SEX"));
 		employee.setBirth(resultset.getDate("BIRTHDATE"));
-		employee.setSalary(resultset.getFloat("SALARY"));
-		employee.setBonus(resultset.getFloat("BONUS"));
-		employee.setCommission(resultset.getFloat("COMM"));
+		employee.setSalary(resultset.getBigDecimal("SALARY"));
+		employee.setBonus(resultset.getBigDecimal("BONUS"));
+		employee.setCommission(resultset.getBigDecimal("COMM"));
         return employee;
     }
 }

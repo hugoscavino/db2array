@@ -15,6 +15,7 @@
  */
 package com.ijudy.domain;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -33,12 +34,12 @@ public class Employee {
 	private String phone; 		// "PHONENO" CHAR(4 OCTETS),
 	private Date hireDate; 		// "HIREDATE" DATE,
 	private String job; 		// "JOB" CHAR(8 OCTETS),
-	private String eduLevel; 	// "EDLEVEL" SMALLINT NOT NULL,
+	private Integer eduLevel; 	// "EDLEVEL" SMALLINT NOT NULL,
 	private String sex; 		// "SEX" CHAR(1 OCTETS),
 	private Date birth; 		// "BIRTHDATE" DATE,
-	private float salary; 		// "SALARY" DECIMAL(9 , 2),
-	private float bonus; 		// "BONUS" DECIMAL(9 , 2),
-	private float commission; 	// "COMM" DECIMAL(9 , 2)
+	private BigDecimal salary; 		// "SALARY" DECIMAL(9 , 2),
+	private BigDecimal bonus; 		// "BONUS" DECIMAL(9 , 2),
+	private BigDecimal commission; 	// "COMM" DECIMAL(9 , 2)
 
 	@Override
 	public String toString() {
@@ -124,11 +125,11 @@ public class Employee {
 		this.job = job;
 	}
 
-	public String getEduLevel() {
+	public Integer getEduLevel() {
 		return eduLevel;
 	}
 
-	public void setEduLevel(String eduLevel) {
+	public void setEduLevel(Integer eduLevel) {
 		this.eduLevel = eduLevel;
 	}
 
@@ -148,27 +149,27 @@ public class Employee {
 		this.birth = birth;
 	}
 
-	public float getSalary() {
+	public BigDecimal getSalary() {
 		return salary;
 	}
 
-	public void setSalary(float salary) {
+	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
 	}
 
-	public float getBonus() {
+	public BigDecimal getBonus() {
 		return bonus;
 	}
 
-	public void setBonus(float bonus) {
+	public void setBonus(BigDecimal bonus) {
 		this.bonus = bonus;
 	}
 
-	public float getCommission() {
+	public BigDecimal getCommission() {
 		return commission;
 	}
 
-	public void setCommission(float commission) {
+	public void setCommission(BigDecimal commission) {
 		this.commission = commission;
 	}
 }
