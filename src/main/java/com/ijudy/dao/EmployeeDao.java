@@ -23,9 +23,30 @@ import com.ijudy.domain.Employee;
 
 @Component
 public interface EmployeeDao {
-	
-	public List<Employee> getEmployees(String[] empNumbers) throws SQLException;
-	public List<Employee> getEmployeesCallableStatment(String[] empNumbers) throws SQLException;
-	public List<Employee> getEmployeesCallableStatementCreator(String[] empNumbers) throws SQLException;
+
+	/**
+	 * Using a more high level Spring SimpleJdbcCall
+	 * 
+	 * @param empNumbers
+	 * @return
+	 * @throws SQLException
+	 */
 	public List<Employee> getEmployeesSimpleJdbcCall(String[] empNumbers) throws SQLException;
+
+	/**
+	 * Using the simple CallableStatment
+	 * @param empNumbers String[]
+	 * @return List<Employee> that meet that criteria
+	 * @throws SQLException
+	 */
+	public List<Employee> getEmployeesCallableStatment(String[] empNumbers) throws SQLException;
+	
+	/**
+	 * Using the low level CallableStatementCreator
+	 * @param empNumbers
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Employee> getEmployeesCallableStatementCreator(String[] empNumbers) throws SQLException;
+	
 }

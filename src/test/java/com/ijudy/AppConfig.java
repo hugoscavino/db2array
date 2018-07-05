@@ -80,31 +80,6 @@ public class AppConfig {
     	return dao;
     }
     
-    /*     
-  	@Bean
-  	public EmployeeService employeeService() throws Exception {
-  		EmployeeServiceImpl svc = new EmployeeServiceImpl();
-  		svc.setEmployeMapper(employeeMapper());
-		return svc;
-  	}
-     
-    @Bean
-    public EmployeeMapper employeeMapper() throws Exception {
-      @SuppressWarnings("resource")
-	  SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(sqlSessionFactory());
-      sessionTemplate.getConfiguration().addMapper(EmployeeMapper.class); // new code
-      return sessionTemplate.getMapper(EmployeeMapper.class);
-    }
-
-   
-       
-    @Bean
-    public MapperFactoryBean<EmployeeMapper> employeeMapper() throws Exception {
-        MapperFactoryBean<EmployeeMapper> factoryBean = new MapperFactoryBean<>(EmployeeMapper.class);
-        factoryBean.setSqlSessionFactory(sqlSessionFactory());
-        return factoryBean;
-    }
-    */
       
     @Bean
     public DataSource dataSource()

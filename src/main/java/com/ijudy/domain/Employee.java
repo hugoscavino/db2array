@@ -20,7 +20,8 @@ import java.sql.Date;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
- * A simple bean that holds Employee info.
+ * A simple bean that holds Employee info. Taken from IBM SAMPLES
+ * See the SQL and DDL to create your own
  */
 public class Employee {
 

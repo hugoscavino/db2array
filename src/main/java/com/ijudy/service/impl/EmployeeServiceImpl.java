@@ -11,8 +11,13 @@ import com.ijudy.mapper.EmployeeMapper;
 import com.ijudy.service.EmployeeService;
 
 /**
- * EmployeeService simply receives an array of emp numbers and uses a mapper to get a list of
+ * EmployeeService simply receives an array of employees  and uses a mapper to get a list of
  * employees from the database.
+ * 
+ * There a number of implementations to choose from in this sample project
+ * 
+ * Choose one that works for your design
+ * 
  */
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService{

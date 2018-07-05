@@ -29,9 +29,9 @@ import com.ijudy.domain.Employee;
 /**
  * A org.mybatis.spring sample mapper. This interface will be used by MapperFactoryBean to create a
  * proxy implementation at Spring application startup.
+ * @see com.ijudy.mapper.typehandler.Db2ArrayTypeHandler this is way to map to the custom DB2 implementation
+ * 
  */
-
-
 public interface EmployeeMapper {
 	  String STOR_PROC_GET_BY_EMPNUMBERS = "call IJUDY.GET_BY_EMPNUMBERS("
 		      + "#{I_EMP_ID_ARRAY,	jdbcType=ARRAY,		mode=IN,  typeHandler=com.ijudy.mapper.typehandler.Db2ArrayTypeHandler},"

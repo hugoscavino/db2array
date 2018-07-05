@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>arraydemo</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Java Project demonstraing the use of ARRAY with DB2 stored procedures. Using Spring Boot, MyBatis and various SP calling designs.</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

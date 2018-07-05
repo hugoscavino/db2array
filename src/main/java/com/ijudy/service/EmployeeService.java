@@ -9,5 +9,11 @@ import com.ijudy.domain.Employee;
 @Service
 public interface EmployeeService {
 
+	/**
+	 * Retrieve a list of Employees who match this criteria
+	 * 
+	 * @param empNumbers
+	 * @return
+	 */
 	  public List<Employee> getEmployees(String[] empNumbers);
 }

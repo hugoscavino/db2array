@@ -34,13 +34,18 @@ public class EmployeeMapperTest {
 	 @Autowired
 	 private EmployeeMapper employeeMapper;
 
+	 final static String EMP_ID_10 = "000010";
+	 final static String EMP_ID_20 = "000020";
+	 final static String EMP_ID_30 = "000030";
+	
+	 final static String[] EMP_IDS = new String[]{EMP_ID_10,
+												EMP_ID_20,
+												EMP_ID_30};
 	  @Test
 	  final public void testMapper() {
-		  
-		String[] epm_ids = {"000010", "000020"};
 		
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("I_EMP_ID_ARRAY", epm_ids);
+		params.put("I_EMP_ID_ARRAY", EMP_IDS);
 	    List<Employee> emps = this.employeeMapper.getEmployees(params);
 		
 	    assertThat(emps).isNotNull();

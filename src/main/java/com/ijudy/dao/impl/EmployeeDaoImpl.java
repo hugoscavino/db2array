@@ -18,6 +18,7 @@ import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.core.simple.SimpleJdbcCall;
+import org.springframework.jdbc.datasource.DataSourceUtils;
 
 import com.ijudy.dao.EmployeeDao;
 import com.ijudy.dao.EmployeeRowMapper;
@@ -32,28 +33,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	final String SCHEMA_PROC_NAME = "{call IJUDY.GET_BY_EMPNUMBERS(?,?,?,?)}";
-	final String PROC_NAME = "GET_BY_EMPNUMBERS";
-	final String SCHEMA = "IJUDY";
+	final String PROC_NAME 	= "GET_BY_EMPNUMBERS";
+	final String SCHEMA 	= "IJUDY";
+	final String SCHEMA_PROC_NAME = "{call " + SCHEMA + "." + PROC_NAME + "(?,?,?,?)}";
 	final String ARRAY_TYPE = "VARCHAR";
-	@Override
-	public List<Employee> getEmployees(String[] empNumbers) throws SQLException {
-
-		SimpleJdbcCall jdbcCall = new SimpleJdbcCall(jdbcTemplate.getDataSource())
-				.withProcedureName(PROC_NAME)
-				.withSchemaName(SCHEMA);
-
-		List<Employee> list = new ArrayList<Employee>();
-
-		Connection conn = jdbcTemplate.getDataSource().getConnection();
-
-		Array empArray = conn.createArrayOf(ARRAY_TYPE, empNumbers);
-
-		SqlParameterSource I_EMP_ID_ARRAY = new MapSqlParameterSource().addValue("I_EMP_ID_ARRAY", empArray);
-		Map<String, Object> rs = jdbcCall.execute(I_EMP_ID_ARRAY);
-		return list;
-	}
-
+	
 	@Override
 	public List<Employee> getEmployeesCallableStatment(String[] empNumbers) throws SQLException {
 
@@ -77,31 +61,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			ResultSet resultset = callableSt.executeQuery();
 			if (resultset != null) {
 				while (resultset.next()) {
-					Employee employee = new Employee();
-			        employee.setEmpNo(resultset.getString("EMPNO"));
-					employee.setFirstName(resultset.getString("FIRSTNME"));
-					employee.setMiddle(resultset.getString("MIDINIT"));
-					employee.setLastName(resultset.getString("LASTNAME"));
-					employee.setWorkDept(resultset.getString("WORKDEPT"));
-					employee.setPhone(resultset.getString("PHONENO"));
-					employee.setHireDate(resultset.getDate("HIREDATE"));
-					employee.setJob(resultset.getString("JOB"));
-					employee.setEduLevel(resultset.getString("EDLEVEL"));		
-					employee.setSex(resultset.getString("SEX"));
-					employee.setBirth(resultset.getDate("BIRTHDATE"));
-					employee.setSalary(resultset.getFloat("SALARY"));
-					employee.setBonus(resultset.getFloat("BONUS"));
-					employee.setCommission(resultset.getFloat("COMM"));
+					EmployeeRowMapper mapper = new EmployeeRowMapper();
+					Employee employee = mapper.mapRow(resultset, resultset.getRow());
 					list.add(employee);
 				}
 			}
 
 		} catch (SQLException e) {
-
 			e.printStackTrace();
-
-		} finally {
-
+		} 
+		finally {
 			if (connection != null) {
 				connection.close();
 			}
@@ -129,7 +98,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 			@Override
 			public CallableStatement createCallableStatement(Connection connection) throws SQLException {
-				Array EMP_ARRAY = connection.createArrayOf("VARCHAR", empNumbers);
+				Array EMP_ARRAY = connection.createArrayOf(ARRAY_TYPE, empNumbers);
 				CallableStatement callableStatement = connection.prepareCall(SCHEMA_PROC_NAME);
 				callableStatement.setArray(1, EMP_ARRAY);
 				callableStatement.registerOutParameter(2, Types.CHAR);
@@ -174,7 +143,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		
 		SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate).
 										withProcedureName(PROC_NAME).
-										withSchemaName("IJUDY").
+										withSchemaName(SCHEMA).
 										withoutProcedureColumnMetaDataAccess().
 										useInParameterNames("I_EMP_ID_ARRAY").
 										declareParameters(
@@ -182,20 +151,22 @@ public class EmployeeDaoImpl implements EmployeeDao {
 												new SqlOutParameter("O_STATUS", Types.CHAR),
 												new SqlOutParameter("O_ERROR_CD", Types.INTEGER),
 												new SqlOutParameter("O_ERROR_MSG", Types.VARCHAR)
-										).returningResultSet("employIds", new EmployeeRowMapper());
+										).returningResultSet("employees", new EmployeeRowMapper());
+
+		Connection conn = DataSourceUtils.getConnection(jdbcTemplate.getDataSource());
+		Array EMP_ARRAY = conn.createArrayOf(ARRAY_TYPE, empNumbers);
 		
-		Array EMP_ARRAY = jdbcTemplate.getDataSource().getConnection().createArrayOf("VARCHAR", empNumbers);
-		
-		SqlParameterSource sqlParameterSource = new MapSqlParameterSource().addValue("I_EMP_ID_ARRAY", EMP_ARRAY);
+		SqlParameterSource sqlParameterSource = new MapSqlParameterSource().
+													addValue("I_EMP_ID_ARRAY", EMP_ARRAY);
 		Map<String, Object> rs = simpleJdbcCall.execute(sqlParameterSource);
 		
 		@SuppressWarnings("unchecked")
-		List<Employee> obj = (List<Employee>)rs.get("employIds");
+		List<Employee> employees = (List<Employee>)rs.get("employees");
 		
 		String status  = (String)rs.get("O_STATUS");
 		
-		if (obj != null) {
-			list.addAll(obj);
+		if (employees != null) {
+			list.addAll(employees);
 		}
 		return list;
 	}

@@ -30,16 +30,19 @@ public class EmployeeDaoImplTest {
 	@Autowired
 	private EmployeeDaoImpl employeeDaoImpl;
 	
+	final static String EMP_ID_10 = "000010";
+	final static String EMP_ID_20 = "000020";
+	final static String EMP_ID_30 = "000030";
+	
+	final static String[] EMP_IDS = new String[]{EMP_ID_10,
+												EMP_ID_20,
+												EMP_ID_30};
+	
 	@Test
 	public void testGetEmployeesCallableStatment() throws Exception {
 		
-		final String EMP_ID_10 = "000010";
-		final String EMP_ID_20 = "000020";
-		final String EMP_ID_30 = "000030";
 		
-		String[] empIds = new String[]{EMP_ID_10,EMP_ID_20,EMP_ID_30};
-		
-		List<Employee> list = employeeDaoImpl.getEmployeesCallableStatment(empIds);
+		List<Employee> list = employeeDaoImpl.getEmployeesCallableStatment(EMP_IDS);
 		assertNotNull("Employee List is Null", list);
 		assertTrue("Employee List is > 0 ", list.size() > 0);
 		final String returnedEmpNum = list.get(0).getEmpNo();
@@ -49,13 +52,7 @@ public class EmployeeDaoImplTest {
 	@Test
 	public void testGetEmployeesCallableCreator() throws Exception {
 		
-		final String EMP_ID_10 = "000010";
-		final String EMP_ID_20 = "000020";
-		final String EMP_ID_30 = "000030";
-		
-		String[] empIds = new String[]{EMP_ID_10,EMP_ID_20,EMP_ID_30};
-		
-		List<Employee> list = employeeDaoImpl.getEmployeesCallableStatementCreator(empIds);
+		List<Employee> list = employeeDaoImpl.getEmployeesCallableStatementCreator(EMP_IDS);
 		assertNotNull("Employee List is Null", list);
 		assertTrue("Employee List is > 0 ", list.size() > 0);
 		final String returnedEmpNum = list.get(0).getEmpNo();
@@ -65,13 +62,8 @@ public class EmployeeDaoImplTest {
 	@Test
 	public void testGetEmployeesSimpleJdbc() throws Exception {
 		
-		final String EMP_ID_10 = "000010";
-		final String EMP_ID_20 = "000020";
-		final String EMP_ID_30 = "000030";
 		
-		String[] empIds = new String[]{EMP_ID_10,EMP_ID_20,EMP_ID_30};
-		
-		List<Employee> list = employeeDaoImpl.getEmployeesSimpleJdbcCall(empIds);
+		List<Employee> list = employeeDaoImpl.getEmployeesSimpleJdbcCall(EMP_IDS);
 		assertNotNull("Employee List is Null", list);
 		assertTrue("Employee List is > 0 ", list.size() > 0);
 		final String returnedEmpNum = list.get(0).getEmpNo();
