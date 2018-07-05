@@ -24,7 +24,8 @@ import com.ijudy.domain.Employee;
 @Component
 public interface EmployeeDao {
 	
-	public List<Employee> getEmployeesCallableStatment(String[] empNumbers) throws SQLException;
-	
 	public List<Employee> getEmployees(String[] empNumbers) throws SQLException;
+	public List<Employee> getEmployeesCallableStatment(String[] empNumbers) throws SQLException;
+	public List<Employee> getEmployeesCallableStatementCreator(String[] empNumbers) throws SQLException;
+	public List<Employee> getEmployeesSimpleJdbcCall(String[] empNumbers) throws SQLException;
 }

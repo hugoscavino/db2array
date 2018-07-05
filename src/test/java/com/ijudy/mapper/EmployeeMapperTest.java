@@ -2,8 +2,9 @@ package com.ijudy.mapper;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,11 +37,12 @@ public class EmployeeMapperTest {
 	  @Test
 	  final public void testMapper() {
 		  
-		List<String> params = new ArrayList<String>(2);
-		params.add("000010");
-		params.add("000020");
+		String[] epm_ids = {"000010", "000020"};
 		
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("I_EMP_ID_ARRAY", epm_ids);
 	    List<Employee> emps = this.employeeMapper.getEmployees(params);
+		
 	    assertThat(emps).isNotNull();
 	    assertThat(emps.get(0)).isNotNull();
 	    assertThat(emps.get(0).getEmpNo().equalsIgnoreCase("000010"));

@@ -45,5 +45,37 @@ public class EmployeeDaoImplTest {
 		final String returnedEmpNum = list.get(0).getEmpNo();
 		assertTrue("Employee EMPNO eq 000010 instead eq : " + returnedEmpNum, returnedEmpNum.equalsIgnoreCase(EMP_ID_10));
 	}
+	
+	@Test
+	public void testGetEmployeesCallableCreator() throws Exception {
+		
+		final String EMP_ID_10 = "000010";
+		final String EMP_ID_20 = "000020";
+		final String EMP_ID_30 = "000030";
+		
+		String[] empIds = new String[]{EMP_ID_10,EMP_ID_20,EMP_ID_30};
+		
+		List<Employee> list = employeeDaoImpl.getEmployeesCallableStatementCreator(empIds);
+		assertNotNull("Employee List is Null", list);
+		assertTrue("Employee List is > 0 ", list.size() > 0);
+		final String returnedEmpNum = list.get(0).getEmpNo();
+		assertTrue("Employee EMPNO eq 000010 instead eq : " + returnedEmpNum, returnedEmpNum.equalsIgnoreCase(EMP_ID_10));
+	}
+
+	@Test
+	public void testGetEmployeesSimpleJdbc() throws Exception {
+		
+		final String EMP_ID_10 = "000010";
+		final String EMP_ID_20 = "000020";
+		final String EMP_ID_30 = "000030";
+		
+		String[] empIds = new String[]{EMP_ID_10,EMP_ID_20,EMP_ID_30};
+		
+		List<Employee> list = employeeDaoImpl.getEmployeesSimpleJdbcCall(empIds);
+		assertNotNull("Employee List is Null", list);
+		assertTrue("Employee List is > 0 ", list.size() > 0);
+		final String returnedEmpNum = list.get(0).getEmpNo();
+		assertTrue("Employee EMPNO eq 000010 instead eq : " + returnedEmpNum, returnedEmpNum.equalsIgnoreCase(EMP_ID_10));
+	}
 
 }

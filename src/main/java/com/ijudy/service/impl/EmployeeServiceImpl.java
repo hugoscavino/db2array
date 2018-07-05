@@ -1,6 +1,8 @@
 package com.ijudy.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +23,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 	   this.mapper = mapper;
 	}
 	  
-	public List<Employee> getEmployees(List<String> empNumbers) {
-	  return this.mapper.getEmployees(empNumbers);
+
+	@Override
+	public List<Employee> getEmployees(String[] emp_ids) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("I_EMP_ID_ARRAY", emp_ids);
+		return this.mapper.getEmployees(params);
 	}
 }

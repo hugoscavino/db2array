@@ -9,5 +9,5 @@ import com.ijudy.domain.Employee;
 @Service
 public interface EmployeeService {
 
-	  public List<Employee> getEmployees(List<String> empNumbers);
+	  public List<Employee> getEmployees(String[] empNumbers);
 }
