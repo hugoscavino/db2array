@@ -34,10 +34,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	final String PROC_NAME 	= "GET_BY_EMPNUMBERS";
-	final String SCHEMA 	= "IJUDY";
+	final String SCHEMA 			= "IJUDY";
+	final String PROC_NAME 			= "GET_BY_EMPNUMBERS";
 	final String SCHEMA_PROC_NAME = "{call " + SCHEMA + "." + PROC_NAME + "(?,?,?,?)}";
-	final String ARRAY_TYPE = "VARCHAR";
+	final String ARRAY_TYPE 		= "VARCHAR";
 	
 	@Override
 	public List<Employee> getEmployeesCallableStatment(String[] empNumbers) throws SQLException {
@@ -110,8 +110,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			}
 		}, paramList);
 
+		/*
+		 * #result-set-1 result set i.e. select record as defined by the vendor
+		 */
 		@SuppressWarnings("unchecked")
 		List<Map<String, Object>> resultsList = (List<Map<String, Object>>)resultMap.get("#result-set-1");
+		
 		for (Map<String, Object> row :  resultsList) {
 			Employee employee = new Employee();
 	        employee.setEmpNo((String)row.get("EMPNO"));
@@ -164,7 +168,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		@SuppressWarnings("unchecked")
 		List<Employee> employees = (List<Employee>)rs.get("employees");
 		
-		String status  = (String)rs.get("O_STATUS");
+		@SuppressWarnings("unused")
+		String status  = (String)rs.get("O_STATUS");	// Conditional business logic based on the status returned
+
 		
 		if (employees != null) {
 			list.addAll(employees);
@@ -173,4 +179,3 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 }
-

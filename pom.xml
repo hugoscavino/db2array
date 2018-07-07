@@ -6,10 +6,10 @@
 	<groupId>com.ijudy</groupId>
 	<artifactId>arraydemo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>arraydemo</name>
-	<description>Java Project demonstraing the use of ARRAY with DB2 stored procedures. Using Spring Boot, MyBatis and various SP calling designs.</description>
+	<description>Java Project demonstrating the use of ARRAY with DB2 stored procedures. Using Spring Boot, MyBatis and various SP calling designs.</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -32,31 +32,31 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		
-		    <!-- Compile dependencies -->
-       <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
 		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-lang3</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
+		
 		    <groupId>commons-dbcp</groupId>
 		    <artifactId>commons-dbcp</artifactId>
 		    <version>${commons-dbcp.version}</version>
 		</dependency>
 		
-	    <!-- https://mvnrepository.com/artifact/com.ibm.db2.jcc/db2jcc4 -->
-	    <!-- https://jmmwrite.wordpress.com/2017/05/25/adding-db2-jdbc-drivers-to-a-maven-java-project/ -->
-		<dependency>
+	    <dependency>
 		    <groupId>com.ibm.db2.jcc</groupId>
 		    <artifactId>db2jcc4</artifactId>
 		    <version>10.1</version>
@@ -72,7 +72,7 @@
       		<artifactId>mybatis</artifactId>
       		<version>${mybatis.version}</version>
 	    </dependency>
-    	<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
+    	
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis-spring</artifactId>
@@ -97,7 +97,6 @@
 	      <scope>test</scope>
 	    </dependency>
 	    
-		<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
 		<dependency>
 		    <groupId>org.assertj</groupId>
 		    <artifactId>assertj-core</artifactId>

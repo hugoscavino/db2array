@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ijudy.domain.Employee;
@@ -22,6 +23,7 @@ import com.ijudy.service.EmployeeService;
 @Transactional
 public class EmployeeServiceImpl implements EmployeeService{
 	
+	@Autowired
 	private EmployeeMapper mapper;
 
 	public void setEmployeMapper(EmployeeMapper mapper) {

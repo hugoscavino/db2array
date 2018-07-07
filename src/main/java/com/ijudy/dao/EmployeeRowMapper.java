@@ -8,6 +8,10 @@ import org.springframework.jdbc.core.RowMapper;
 import com.ijudy.domain.Employee;
 
 /**
+ * 
+ * RowMapper for an Employee
+ * @see org.springframework.jdbc.core.RowMapper
+ * 
  * "EMPNO" CHAR(6 OCTETS) NOT NULL,
  * "FIRSTNME" VARCHAR(12 OCTETS) NOT NULL,
  * "MIDINIT" CHAR(1 OCTETS),
@@ -27,7 +31,8 @@ import com.ijudy.domain.Employee;
  *
  */
 public class EmployeeRowMapper implements RowMapper<Employee> {
-    @Override
+   
+	@Override
     public Employee mapRow(ResultSet resultset, int rowNum) throws SQLException {
         Employee employee = new Employee();
 

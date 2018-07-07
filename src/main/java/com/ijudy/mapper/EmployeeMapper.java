@@ -27,9 +27,10 @@ import org.apache.ibatis.mapping.StatementType;
 import com.ijudy.domain.Employee;
 
 /**
- * A org.mybatis.spring sample mapper. This interface will be used by MapperFactoryBean to create a
+ * A org.mybatis.spring  mapper. This interface will be used by MapperFactoryBean to create a
  * proxy implementation at Spring application startup.
- * @see com.ijudy.mapper.typehandler.Db2ArrayTypeHandler this is way to map to the custom DB2 implementation
+ * 
+ * @see com.ijudy.mapper.typehandler.Db2ArrayTypeHandler as a way to map to the custom DB2 Array implementation
  * 
  */
 public interface EmployeeMapper {

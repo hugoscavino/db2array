@@ -38,9 +38,9 @@ public class EmployeeMapperTest {
 	 final static String EMP_ID_20 = "000020";
 	 final static String EMP_ID_30 = "000030";
 	
-	 final static String[] EMP_IDS = new String[]{EMP_ID_10,
-												EMP_ID_20,
-												EMP_ID_30};
+	 final static String[] EMP_IDS = new String[]{	EMP_ID_10,
+													EMP_ID_20,
+													EMP_ID_30};
 	  @Test
 	  final public void testMapper() {
 		
@@ -50,9 +50,9 @@ public class EmployeeMapperTest {
 		
 	    assertThat(emps).isNotNull();
 	    assertThat(emps.get(0)).isNotNull();
-	    assertThat(emps.get(0).getEmpNo().equalsIgnoreCase("000010"));
+	    assertThat(emps.get(0).getEmpNo().equalsIgnoreCase(EMP_ID_10));
 	    
 	    assertThat(emps.get(1)).isNotNull();
-	    assertThat(emps.get(1).getEmpNo().equalsIgnoreCase("000020"));
+	    assertThat(emps.get(1).getEmpNo().equalsIgnoreCase(EMP_ID_20));
 	  }
 }

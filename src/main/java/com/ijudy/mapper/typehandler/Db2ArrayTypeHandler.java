@@ -22,6 +22,7 @@ import org.apache.ibatis.type.TypeHandler;
  */
 public class Db2ArrayTypeHandler implements TypeHandler<String[]> {
 
+	// Not sure why this is CHAR is some documentation. Happy to learn the difference
 	public static final String ARRAY_TYPE = "VARCHAR";
 
 	/**
