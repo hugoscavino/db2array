@@ -14,7 +14,7 @@ In order to use Array you will need to create a custom type in DB2.  Work with D
  'CREATE TYPE "IJUDY"."STRING_ARRAY" AS VARCHAR(128 OCTETS) ARRAY [256];'
  
 ### 2 - Create the SP using the Type
-See the file GET_BY_EMPNUMBERS.sql for a SP that quries the default EMPLOYEE database IBM;s SAMPLE db
+See the file GET_BY_EMPNUMBERS.sql for a SP that quries the default EMPLOYEE database IBM's SAMPLE db
 
 ## 3 Create Mapper or DAO Classes to Invoke the SP
 
